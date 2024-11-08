@@ -1,13 +1,13 @@
 [jenkins-master]
-10.70.1.64
+10.70.1.169
 
 [jenkins-master:vars]
 ansible_user=ubuntu
 ansible_ssh_private_key_file=/opt/nginx-server-keypair.pem
 
-[jenkins-slave]
-10.70.0.29
+[jenkins-build]
+10.70.0.197
 
-[jenkins-slave:vars]
+[jenkins-build:vars]
 ansible_user=ubuntu
 ansible_ssh_private_key_file=/opt/nginx-server-keypair.pem
