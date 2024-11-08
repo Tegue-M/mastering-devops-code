@@ -1,0 +1,42 @@
+---
+- hosts: jenkins-master
+  become: true
+  tasks:
+
+  # Format of ansible tasks
+
+  #  - name: install jenkins # name of the step
+  #    apt: # This is the name of the module (go and google what ansible module is used to to add jenkins key, add repo, enable reboot etc You will get the answers)
+  #      name: jenkins # Name of the package to install
+  #      state: present
+  # Below, if you google how to install jenkins on Ubuntu, you will find these steps, we are basically translating those steps into a playbook
+
+    - name: add jenkins key
+      apt_key:
+        url: https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+        state: present
+
+    - name: add jenkins repo
+      apt_repository:
+        repo: 'deb https://pkg.jenkins.io/debian-stable binary/'
+        state: present
+    
+    - name: install java
+      apt:
+        name: openjdk-17-jre
+        state: present
+
+    - name: install jenkins
+      apt:
+        name: jenkins
+        state: present
+    
+    - name: start jenkins service
+      service:
+        name: jenkins
+        state: started
+    
+    - name: enable jenkins to start after boot
+      service:
+        name: jenkins
+        enabled: yes

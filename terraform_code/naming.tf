@@ -40,7 +40,7 @@ locals {
         instance_type               = var.webserver_instance_type
         subnet_id                   = module.alpha_vpc.public_subnets[0]
         key_name                    = var.webserver_key_name
-        #user_data                   = filebase64("${path.module}/scripts/userdata.sh")
+        user_data                   = filebase64("${path.module}/scripts/ansible-userdata.sh")
         associate_public_ip_address = true
         #iam_instance_profile        = aws_iam_instance_profile.webserver_instance_profile.id
 

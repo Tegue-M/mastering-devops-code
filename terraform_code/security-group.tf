@@ -6,6 +6,12 @@ locals {
       "from_port" = 22,
       "to_port"   = 22,
       "protocol"  = "tcp"
+    },
+    allow_port_8080 = {
+      "source"    = "0.0.0.0/0",
+      "from_port" = 8080,
+      "to_port"   = 8080,
+      "protocol"  = "tcp"
     }
   }
 
